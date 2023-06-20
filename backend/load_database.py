@@ -3,6 +3,8 @@ from sqlite3 import Error
 import pandas as pd
 
 table_name = "heatingoil"
+database_file = "database.db"
+heatingoil_data_file = "data.csv"
 
 def create_connection(db_file):
     conn = None
@@ -20,7 +22,7 @@ def load_heatingoil_data(db_file, data_file):
     try:
         conn = database.connect(db_file)
         print("initiating heating oil payload upload")
-        df = pd.read_csv("data.csv")
+        df = pd.read_csv(data_file)
         df.drop('Change %', inplace = True,axis=1)
         df['Vol'] = df['Vol'].str.replace('K', '').astype(float)
         query = f'Create table if not Exists {table_name} (Date date, Price float, Open float, High float, Low float, Vol float)'
@@ -33,8 +35,8 @@ def load_heatingoil_data(db_file, data_file):
         print(e)
 
 if __name__ == "__main__":
-    create_connection("database.db")
-    load_heatingoil_data("database.db", "heating_oil_model.pkl")
+    create_connection(database_file)
+    load_heatingoil_data(database_file, heatingoil_data_file)
 
 
 

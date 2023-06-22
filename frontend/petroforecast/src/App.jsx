@@ -26,7 +26,7 @@ function App() {
   const [highPoint, setHighPoint] = useState('');
   const [lowPoint, setLowPoint] = useState('');
   const [volumePoint, setVolumePoint] = useState('');
-  const [finalPrediction, setPrediction] = useState({'prediction': "prediction"});
+  const [finalPrediction, setPrediction] = useState({'prediction': "Prediction"});
 
   const handleOpenChange = (event) => {
 		setOpenPoint(event.target.value);
@@ -141,7 +141,7 @@ function App() {
                   bottom: 0,
                 }}
               >
-                <CartesianGrid />
+                <CartesianGrid strokeDasharray="3 3" />
                 <XAxis type="number" dataKey="Open" name="Open" domain={['auto', 'auto']} />
                 <YAxis type="number" dataKey="High" name="High" domain={['auto', 'auto']}/>
                 <ZAxis type="number" dataKey="Low"  name="Low" domain={['auto', 'auto']} />

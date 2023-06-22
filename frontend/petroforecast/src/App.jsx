@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
+import { useEffect, useState } from 'react';
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
+  ZAxis,
   CartesianGrid,
   Tooltip,
   Legend,
@@ -22,48 +24,68 @@ function App() {
 
   const data = [
     {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      "Date": "2009-12-04",
+      "Price": 2.0593,
+      "Open": 2.065,
+      "High": 2.1197,
+      "Low": 2.0477,
+      "Vol": 15.38
     },
     {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      "Date": "2009-12-03",
+      "Price": 2.0815,
+      "Open": 2.0718,
+      "High": 2.0946,
+      "Low": 2.0531,
+      "Vol": 14.02
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      "Date": "2009-12-02",
+      "Price": 2.0677,
+      "Open": 2.107,
+      "High": 2.1107,
+      "Low": 2.0571,
+      "Vol": 15.29
     },
     {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      "Date": "2009-12-01",
+      "Price": 2.1075,
+      "Open": 2.0796,
+      "High": 2.1262,
+      "Low": 2.0768,
+      "Vol": 13.68
     },
     {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      "Date": "2009-11-30",
+      "Price": 2.0479,
+      "Open": 2.0111,
+      "High": 2.0736,
+      "Low": 1.9917,
+      "Vol": 55.05
     },
     {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+      "Date": "2009-11-27",
+      "Price": 2.0096,
+      "Open": 2.0349,
+      "High": 2.0349,
+      "Low": 1.9103,
+      "Vol": 30.98
+    }
+  ]
+
+  const printData = () => {
+    const url = 'http://127.0.0.1:8000/';
+    fetch(url)
+      .then(response => response.json())
+      .then(jsonData => {
+        // Use the jsonData variable here
+        console.log(jsonData[0]);
+      })
+    .catch(error => {
+      // Handle any errors that occurred during the fetch
+      console.log('Error:', error);
+    });
+  }
 
   return (
     <>
@@ -90,18 +112,22 @@ function App() {
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Opening</label>
-                        <input type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Opening Point" required />
+                        <input type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Opening Point" required autoComplete='off'/>
                     </div>  
                     <div>
                         <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">High</label>
-                        <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="High Point" required />
+                        <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="High Point" required  autoComplete='off'/>
                     </div>
                     <div>
                         <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Low</label>
-                        <input type="url" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required />
+                        <input type="url" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off'/>
+                    </div>
+                    <div>
+                        <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Volume</label>
+                        <input type="url" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off'/>
                     </div>
                     <div style={{paddingTop: "28px"}}>
-                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Prompt</button>
+                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{printData()}}>Prompt</button>
                     </div>
                 </div>
             </form>
@@ -119,10 +145,11 @@ function App() {
                 }}
               >
                 <CartesianGrid />
-                <XAxis type="number" dataKey="uv" name="stature" unit="cm" />
-                <YAxis type="number" dataKey="pv" name="weight" unit="kg" />
+                <XAxis type="number" dataKey="Open" name="stature" />
+                <YAxis type="number" dataKey="High" name="weight" />
+                <ZAxis type="number" dataKey="Low"  name="score" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="A school" data={data} fill="#8884d8" />
+                <Scatter name="A school" data={data} fill="gray" />
               </ScatterChart>
             </ResponsiveContainer>
           </div>
@@ -141,10 +168,10 @@ function App() {
                 }}
               >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
+              <XAxis dataKey="Date" />
               <YAxis />
               <Tooltip />
-              <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+              <Line type="monotone" dataKey="Price" stroke="#8884d8" fill="#8884d8" dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -163,11 +190,12 @@ function App() {
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="Date" />
                 <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="pv" stroke="green" fill="#82ca9d" />
-                <Line type="monotone" dataKey="uv" stroke="blue" fill="#82ca9d" />
+                <Line type="monotone" dataKey="High" stroke="green" fill="#82ca9d" dot={false} />
+                <Line type="monotone" dataKey="Low" stroke="red" fill="#82ca9d" dot={false} />
+                <Line type="monotone" dataKey="Open" stroke="blue" fill="#82ca9d" dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>

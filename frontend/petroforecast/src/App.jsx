@@ -21,70 +21,62 @@ import Header from "./components/Header"
 import "./App.css"
 
 function App() {
+  const [data, setData] = useState([]);
+  const [openPoint, setOpenPoint] = useState('');
+  const [highPoint, setHighPoint] = useState('');
+  const [lowPoint, setLowPoint] = useState('');
+  const [volumePoint, setVolumePoint] = useState('');
+  const [finalPrediction, setPrediction] = useState({'prediction': "prediction"});
 
-  const data = [
-    {
-      "Date": "2009-12-04",
-      "Price": 2.0593,
-      "Open": 2.065,
-      "High": 2.1197,
-      "Low": 2.0477,
-      "Vol": 15.38
-    },
-    {
-      "Date": "2009-12-03",
-      "Price": 2.0815,
-      "Open": 2.0718,
-      "High": 2.0946,
-      "Low": 2.0531,
-      "Vol": 14.02
-    },
-    {
-      "Date": "2009-12-02",
-      "Price": 2.0677,
-      "Open": 2.107,
-      "High": 2.1107,
-      "Low": 2.0571,
-      "Vol": 15.29
-    },
-    {
-      "Date": "2009-12-01",
-      "Price": 2.1075,
-      "Open": 2.0796,
-      "High": 2.1262,
-      "Low": 2.0768,
-      "Vol": 13.68
-    },
-    {
-      "Date": "2009-11-30",
-      "Price": 2.0479,
-      "Open": 2.0111,
-      "High": 2.0736,
-      "Low": 1.9917,
-      "Vol": 55.05
-    },
-    {
-      "Date": "2009-11-27",
-      "Price": 2.0096,
-      "Open": 2.0349,
-      "High": 2.0349,
-      "Low": 1.9103,
-      "Vol": 30.98
-    }
-  ]
+  const handleOpenChange = (event) => {
+		setOpenPoint(event.target.value);
+	};
+  const handleHighChange = (event) => {
+		setHighPoint(event.target.value);
+	};
+  const handleLowChange = (event) => {
+		setLowPoint(event.target.value);
+	};
+  const handleVolumeChange = (event) => {
+		setVolumePoint(event.target.value);
+	};
 
-  const printData = () => {
-    const url = 'http://127.0.0.1:8000/';
-    fetch(url)
-      .then(response => response.json())
-      .then(jsonData => {
-        // Use the jsonData variable here
-        console.log(jsonData[0]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/loadinitialdata/');
+        const jsonData = await response.json();
+        const variableFromJson = JSON.parse(jsonData);
+        setData(variableFromJson);
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
+    
+    fetchData();
+  }, [])
+
+  const handePrediction = (event) => {
+    event.preventDefault();
+    try{
+      fetch("http://127.0.0.1:8000/predict/", {
+        method: "POST",
+        body: JSON.stringify({
+          Open: openPoint,
+          High: highPoint,
+          Low: lowPoint,
+          Vol: volumePoint
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
       })
-    .catch(error => {
-      // Handle any errors that occurred during the fetch
+      .then((response) => response.json())
+      .then((json) => {setPrediction(json); console.log(json)});
+    }
+    catch(error){
       console.log('Error:', error);
-    });
+    }
   }
 
   return (
@@ -108,29 +100,34 @@ function App() {
           </div>
           <hr className="h-px my-8 bg-gray-900 border-0"></hr>
           <div className="m-10">
-            <form>
+            <form onSubmit={(event)=>{handePrediction(event)}}>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Opening</label>
-                        <input type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Opening Point" required autoComplete='off'/>
+                        <label htmlFor="openpoint" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Open</label>
+                        <input type="float" id="openpoint" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Opening Point" required autoComplete='off' onChange={handleOpenChange}/>
                     </div>  
                     <div>
-                        <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">High</label>
-                        <input type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="High Point" required  autoComplete='off'/>
+                        <label htmlFor="highpoint" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">High</label>
+                        <input type="float" id="highpoint" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="High Point" required  autoComplete='off' onChange={handleHighChange}/>
                     </div>
                     <div>
-                        <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Low</label>
-                        <input type="url" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off'/>
+                        <label htmlFor="lowpoint" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Low</label>
+                        <input type="float" id="lowpoint" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off' onChange={handleLowChange}/>
                     </div>
                     <div>
-                        <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Volume</label>
-                        <input type="url" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off'/>
+                        <label htmlFor="volume" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Volume (K unit)</label>
+                        <input type="float" id="volume" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off' onChange={handleVolumeChange}/>
                     </div>
                     <div style={{paddingTop: "28px"}}>
-                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{printData()}}>Prompt</button>
+                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Prompt</button>
                     </div>
                 </div>
             </form>
+            <div>
+              <label htmlFor="prediction" className="block mb-2 mt-8 text-sm font-medium text-gray-900 dark:text-white">Price Prediction</label>
+              <input type="float" id="prediction" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" autoComplete='off' disabled placeholder={finalPrediction['prediction']}/>
+            </div>
+            
           </div>
         </div>
         <div className="col-span-2">
@@ -145,9 +142,9 @@ function App() {
                 }}
               >
                 <CartesianGrid />
-                <XAxis type="number" dataKey="Open" name="stature" />
-                <YAxis type="number" dataKey="High" name="weight" />
-                <ZAxis type="number" dataKey="Low"  name="score" />
+                <XAxis type="number" dataKey="Open" name="Open" domain={['auto', 'auto']} />
+                <YAxis type="number" dataKey="High" name="High" domain={['auto', 'auto']}/>
+                <ZAxis type="number" dataKey="Low"  name="Low" domain={['auto', 'auto']} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter name="A school" data={data} fill="gray" />
               </ScatterChart>
@@ -169,7 +166,7 @@ function App() {
               >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="Date" />
-              <YAxis />
+              <YAxis domain={['auto', 'auto']} />
               <Tooltip />
               <Line type="monotone" dataKey="Price" stroke="#8884d8" fill="#8884d8" dot={false} />
               </LineChart>
@@ -191,7 +188,7 @@ function App() {
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="Date" />
-                <YAxis />
+                <YAxis domain={['auto', 'auto']} />
                 <Tooltip />
                 <Line type="monotone" dataKey="High" stroke="green" fill="#82ca9d" dot={false} />
                 <Line type="monotone" dataKey="Low" stroke="red" fill="#82ca9d" dot={false} />

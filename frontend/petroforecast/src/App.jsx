@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import {
   LineChart,
@@ -8,10 +8,6 @@ import {
   ZAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  Brush,
-  AreaChart,
-  Area,
   ResponsiveContainer,
   ScatterChart,
   Scatter
@@ -85,6 +81,9 @@ function App() {
       <div className="grid grid-cols-3 gap-4" style={{height: "94vh"}}>
         <div className="" style={{backgroundColor: "#d4edf7"}}>
           <div className="m-10">
+            <div style={{textAlign: "center", color: "black", fontWeight: "800", fontSize: "22px", marginBottom: "2rem"}}>
+              Heating Oil Futures - USA 🇺🇸 (NYFN3)
+            </div>
             <form>
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
@@ -100,6 +99,9 @@ function App() {
           </div>
           <hr className="h-px my-8 bg-gray-900 border-0"></hr>
           <div className="m-10">
+            <div style={{textAlign: "center", color: "black", fontWeight: "700", fontSize: "20px", marginBottom: "2rem"}}>
+              Predict Futures
+            </div>
             <form onSubmit={(event)=>{handePrediction(event)}}>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                     <div>

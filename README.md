@@ -6,13 +6,13 @@
   </kbd>
 </p>
 
-PetroForecast is your go-to analytical dashboard for predicting USA heating oil futures. Want to uncover the secrets behind Eduardo Saverin's $300k summer at Harvard? Look no further! PetroForecast utilizes cutting-edge technology and a treasure trove of data to help you make informed decisions in the heating oil market.
+Eduardo Saverin made 300k during his summer at harvard betting on heating oil futures, crazy! Built this project to visualize and predict the data and to understand his bet from a prespect of machine learning and smart predictions.
 
 ## Features
 
-- Accessing over 5000 data points of heating oil futures for precise analytics.
+- Accessing over 5000 data points of US heating oil futures for precise analytics.
 - Regression model to predict future heating oil prices.
-- Interactive dashboard with user-friendly charts for easy data visualization.
+- Interactive dashboard with charts for data visualization.
 - Input open, high, low, and potential volume estimates to fine-tune your predictions.
 
 ## Technologies Used

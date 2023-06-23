@@ -23,24 +23,23 @@ Eduardo Saverin made 300k during his summer at harvard betting on heating oil fu
 
 ## Installation
 
-1. Clone the repository:
+Clone & Open the repository:
+```shell
+git clone https://github.com/your-username/petroforecast.git
+cd petroforecast
+```
 
-   ```shell
-    git clone https://github.com/your-username/petroforecast.git
-    cd petroforecast
+Initiate Backend
+```shell
+cd backend
+python3 -m uvicorn main:app --reload
+```
+
+Initiate Frontend
+```shell
+cd frontend/pretroforecast
+npm run dev
    ```
 
-   Initiate Backend
-   ```shell
-   cd backend
-   python3 -m uvicorn main:app --reload
-   ```
-
-   Initiate Frontend
-   ```shell
-   cd frontend/pretroforecast
-   npm run dev
-   ```
-
-   Open application @ [Link Text](http://localhost:5173)
+Then Open application @ [http://localhost:5173](http://localhost:5173)
 

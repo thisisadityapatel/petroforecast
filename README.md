@@ -23,6 +23,8 @@ Eduardo Saverin made 300k during his summer at harvard betting on heating oil fu
 
 ## Installation
 
+Still working on dockerdizing everything to make it easier to install and run this project, but till then if you have the right dependencies, feel free to install.
+
 Clone & Open the repository:
 ```shell
 git clone https://github.com/your-username/petroforecast.git

@@ -6,7 +6,7 @@
   </kbd>
 </p>
 
-Eduardo Saverin (reference: mark zuckerberg friend) made 300k during his summer at harvard betting on heating oil futures, crazy! Built this full stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
+Eduardo Saverin (context: mark zuckerberg friend) made 300k during his summer at harvard betting on heating oil futures, crazy! Built this full stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
 
 ## Features
 

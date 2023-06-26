@@ -162,7 +162,7 @@ function App() {
               <input type="float" id="prediction" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" autoComplete='off' disabled placeholder={finalPrediction['prediction']}/>
             </div>
             <div className="my-12 text-center text-gray-900">
-              Developed by Aditya Patel &#169; 2023
+              Developed by Aditya Patel &#169; 2023 
             </div>
           </div>
         </div>

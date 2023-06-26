@@ -37,6 +37,7 @@ def load_heatingoil_data(db_file, data_file):
 if __name__ == "__main__":
     create_connection(database_file)
     load_heatingoil_data(database_file, heatingoil_data_file)
+    
 
 
 

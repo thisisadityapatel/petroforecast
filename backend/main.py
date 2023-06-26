@@ -76,4 +76,5 @@ def heating_oil_date_range(daterange: DateRange):
     except Exception as e:
         print(e)
         return {"failed"}
+    
 

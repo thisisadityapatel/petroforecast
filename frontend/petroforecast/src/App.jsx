@@ -23,6 +23,8 @@ function App() {
   const [lowPoint, setLowPoint] = useState('');
   const [volumePoint, setVolumePoint] = useState('');
   const [finalPrediction, setPrediction] = useState({'prediction': "Prediction"});
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleOpenChange = (event) => {
 		setOpenPoint(event.target.value);
@@ -36,6 +38,12 @@ function App() {
   const handleVolumeChange = (event) => {
 		setVolumePoint(event.target.value);
 	};
+  const handleStartDate = (event) => {
+    setStartDate(event.target.value);
+  }
+  const handeEndDate = (event) => {
+    setEndDate(event.target.value);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +83,27 @@ function App() {
     }
   }
 
+  const filterGraphRange = (event) => {
+    event.preventDefault();
+    try{
+      fetch("http://127.0.0.1:8000/getdaterange/", {
+        method: "POST",
+        body: JSON.stringify({
+          StartDate: startDate,
+          EndDate: endDate,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+      .then((response) => response.json())
+      .then((json) => {setData(JSON.parse(json))});
+    }
+    catch(error){
+      console.log('Error:', error);
+    }
+  }
+
   return (
     <>
       <Header />
@@ -84,16 +113,19 @@ function App() {
             <div style={{textAlign: "center", color: "black", fontWeight: "800", fontSize: "22px", marginBottom: "2rem"}}>
               Heating Oil Futures - USA 🇺🇸 (NYFN3)
             </div>
-            <form>
+            <form onSubmit={(e) => {filterGraphRange(e)}}>
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                     <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
-                    <input type="date" id="start_date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="startdate" />
+                    <input type="date" id="start_date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="startdate" required onChange={handleStartDate} min='1990-01-31' max='2023-03-30'/>
                 </div>
                 <div>
                     <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
-                    <input type="date" id="start_date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="startdate" />
+                    <input type="date" id="start_date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="startdate" required onChange={handeEndDate} min='1990-01-31' max='2023-03-31'/>
                 </div>
+              </div>
+              <div>
+              <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get Range</button>
               </div>
             </form>
           </div>
@@ -121,7 +153,7 @@ function App() {
                         <input type="float" id="volume" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Low Point" required autoComplete='off' onChange={handleVolumeChange}/>
                     </div>
                     <div style={{paddingTop: "28px"}}>
-                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Prompt</button>
+                      <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Predict</button>
                     </div>
                 </div>
             </form>
@@ -129,7 +161,9 @@ function App() {
               <label htmlFor="prediction" className="block mb-2 mt-8 text-sm font-medium text-gray-900 dark:text-white">Price Prediction</label>
               <input type="float" id="prediction" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" autoComplete='off' disabled placeholder={finalPrediction['prediction']}/>
             </div>
-            
+            <div className="my-12 text-center text-gray-900">
+              Developed by Aditya Patel &#169; 2023
+            </div>
           </div>
         </div>
         <div className="col-span-2">

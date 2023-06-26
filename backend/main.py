@@ -46,7 +46,7 @@ def heating_oil_data_initial():
         conn = database.connect('database.db')
         conn.row_factory = dict_factory
         cursor = conn.cursor()
-        cursor.execute('SELECT Date, Price, Open, High, Low, Vol FROM heatingoil WHERE Date >= "2007-12-24" ORDER BY Date ASC')
+        cursor.execute('SELECT Date, Price, Open, High, Low, Vol FROM heatingoil WHERE Date >= "2022-01-01" ORDER BY Date ASC')
         rows = cursor.fetchall()
         json_data = json.dumps(rows)
         conn.close()
@@ -61,4 +61,19 @@ def heating_oil_prediction(metric: Metric):
     testing = pd.DataFrame({'Open':[metric.Open], 'High':[metric.High], 'Low':[metric.Low], 'Vol': [metric.Vol]})
     result = heating_oil_model.predict(testing)
     return ({"prediction" : result[0]})
+
+@app.post('/getdaterange')
+def heating_oil_date_range(daterange: DateRange):
+    try:
+        conn = database.connect('database.db')
+        conn.row_factory = dict_factory
+        cursor = conn.cursor()
+        cursor.execute(f'SELECT Date, Price, Open, High, Low, Vol FROM heatingoil WHERE Date >= "{daterange.StartDate}" AND Date <= "{daterange.EndDate}" ORDER BY Date ASC')
+        rows = cursor.fetchall()
+        json_data = json.dumps(rows)
+        conn.close()
+        return json_data
+    except Exception as e:
+        print(e)
+        return {"failed"}
 

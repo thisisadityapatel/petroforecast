@@ -12,13 +12,15 @@ Eduardo Saverin (context: mark zuckerberg friend) made 300k during his summer at
 
 - Accessing over 5000 data points of US heating oil futures for precise analytics.
 - Regression model to predict future heating oil prices.
-- Interactive dashboard with charts for data visualization.
+- Time-Series Analysis for future predictions
+- Interactive highly scalable dashboard for data visualization and analysis.
 - Input open, high, low, and potential volume estimates to fine-tune your predictions.
 
 ## Technologies Used
 
 - Backend: Python FastAPI, SQLite3 database for seamless data management.
 - Machine Learning: Scikit library for training accurate prediction models.
+- Time Series: Prophet Library by Facebook (Meta)
 - Frontend: React and Recharts for a captivating and intuitive user interface.
 
 ## Installation

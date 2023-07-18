@@ -5,3 +5,8 @@ services:
     container_name: petrobackend
     ports:
       - '8000:8000'
+  frontend:
+    build: ./frontend/petroforecast
+    container_name: petrofrontend
+    ports:
+      - '3000:3000'

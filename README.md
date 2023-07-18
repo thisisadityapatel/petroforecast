@@ -25,25 +25,9 @@ Eduardo Saverin (context: mark zuckerberg's friend) made 300k during his summer 
 
 ## Installation
 
-Still working on dockerdizing everything to make it easier to install and run this project, but till then if you have the right dependencies, feel free to install.
+The applicstion uses Docker Compose to containerize everthing and make it easier for anyone to setup. One prerequisite includes having docker on the device. You can install docker and docker-compose from [Install Docker](https://github.com/thisisadityapatel/deskgenius/blob/main/LICENSE](https://docs.docker.com/engine/install/)https://docs.docker.com/engine/install/)
 
-Clone & Open the repository:
 ```shell
-git clone https://github.com/your-username/petroforecast.git
-cd petroforecast
+docker-compose up
 ```
-
-Initiate Backend
-```shell
-cd backend
-python3 -m uvicorn main:app --reload
-```
-
-Initiate Frontend
-```shell
-cd frontend/pretroforecast
-npm run dev
-   ```
-
-Then Open application @ [http://localhost:5173](http://localhost:5173)
-
+Visit [http://localhost:3000](http://localhost:3000) to PetroForecast !!

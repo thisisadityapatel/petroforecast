@@ -10,7 +10,7 @@ Eduardo Saverin (context: mark zuckerberg's friend) made 300k during his summer 
 
 <p align="center">
   <kbd>
-    <img src="./petroforecast.jpg" alt="Alt Text" width="700" style="border: 2px solid gray">
+    <img src="./petroforecast.png" alt="Alt Text" width="700" style="border: 2px solid gray">
   </kbd>
 </p>
 

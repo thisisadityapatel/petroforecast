@@ -1,18 +1,4 @@
-# PetroForecast
 
-<p align="center">
-  <kbd>
-    <img src="./edverdo.gif" alt="Alt Text" width="300" style="border: 2px solid gray">
-  </kbd>
-</p>
-
-Eduardo Saverin (context: mark zuckerberg's friend) made 300k during his summer at harvard betting on heating oil futures, crazy! Built this full stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
-
-<p align="center">
-  <kbd>
-    <img src="./petroforecast.png" alt="Alt Text" width="700" style="border: 2px solid gray">
-  </kbd>
-</p>
 
 ## Technologies Used
 

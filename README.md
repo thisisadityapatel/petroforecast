@@ -1,11 +1,5 @@
 # PetroForecast
 
-<p align="center">
-  <kbd>
-    <img src="./edverdo.gif" alt="Alt Text" width="400" style="border: 2px solid gray">
-  </kbd>
-</p>
-
 Eduardo Saverin made 300k during his summer at harvard betting on heating oil futures, crazy! Built this project to visualize and predict the data and to understand his bet from a prespect of machine learning and smart predictions.
 
 ## Features

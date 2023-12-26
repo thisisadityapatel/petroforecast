@@ -21,7 +21,7 @@ Eduardo Saverin (context: mark zuckerberg's friend) made 300k during his summer 
 
 ## Installation
 
-The applicstion uses Docker Compose to containerize everthing and make it easier for anyone to setup. One prerequisite includes having docker on the device. You can install docker and docker-compose from [Install Docker](https://github.com/thisisadityapatel/deskgenius/blob/main/LICENSE](https://docs.docker.com/engine/install/)https://docs.docker.com/engine/install/)
+The applicstion uses Docker Compose to containerize everthing and make it easier for anyone to setup. One prerequisite includes having docker on the device. You can install docker and docker-compose from [here.](https://www.docker.com/products/docker-desktop/)
 
 ```shell
 docker-compose up

@@ -14,7 +14,7 @@ Eduardo Saverin (context: mark zuckerberg's friend) made 300k during his summer 
 
 ## Technologies Used
 
-- Backend: Python FastAPI, SQLite3 database for seamless data management.
+- Backend: Python FastAPI, NumPy, SQLite3 database for seamless data management.
 - Machine Learning: Scikit library for training accurate prediction models.
 - Time Series: Prophet Library by Facebook (Meta)
 - Frontend: React and Recharts for a captivating and intuitive user interface.

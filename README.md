@@ -1,9 +1,9 @@
 <p align="center">
   <kbd>
-    <img src="./petroforecast.png" alt="Alt Text" width="500" style="border: 2px solid gray">
+    <img src="./petroforecast.png" alt="Alt Text" width="400" style="border: 2px solid gray">
   </kbd>
   <kbd>
-    <img src="./edverdo.gif" alt="Alt Text" width="310" style="border: 2px solid gray">
+    <img src="./edverdo.gif" alt="Alt Text" width="210" style="border: 2px solid gray">
   </kbd>
 </p>
 

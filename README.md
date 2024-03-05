@@ -1,6 +1,6 @@
 <p align="center">
   <kbd>
-    <img src="./edverdo.gif" alt="Alt Text" width="300" style="border: 2px solid gray">
+    <img src="./edverdo.gif" alt="Alt Text" width="200" style="border: 2px solid gray">
   </kbd>
 </p>
 
@@ -8,16 +8,17 @@ Eduardo Saverin (context: facebook co-founder) made 300k during his summer at ha
 
 <p align="center">
   <kbd>
-    <img src="./petroforecast.png" alt="Alt Text" width="700" style="border: 2px solid gray">
+    <img src="./petroforecast.png" alt="Alt Text" width="500" style="border: 2px solid gray">
   </kbd>
 </p>
 
 ## Technologies Used
 
-- Backend: Python FastAPI, NumPy, SQLite3 database for seamless data management.
-- Machine Learning: Scikit library for training accurate prediction models.
+- Backend: Python FastAPI, NumPy, SQLite3 database
+- Machine Learning: Scikit library MultiVariable Regression Model
 - Time Series: Prophet Library by Facebook (Meta)
-- Frontend: React and Recharts for a captivating and intuitive user interface.
+- Frontend: React.js, Recharts.js, JavaScript
+- Other: Docker, Docker-Compose
 
 ## Installation
 
@@ -26,4 +27,5 @@ The applicstion uses Docker Compose to containerize everthing and make it easier
 ```shell
 docker-compose up
 ```
-Visit [http://localhost:3000](http://localhost:3000) to PetroForecast !!
+
+The application should be up and running on [http://localhost:3000](http://localhost:3000)

@@ -7,7 +7,7 @@
   </kbd>
 </p>
 
-Eduardo Saverin made 300k during his summer at Harvard betting on heating oil futures, crazy! Built this full-stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
+Eduardo Saverin made $300k during his summer at Harvard betting on heating oil futures, crazy! Built this full-stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
 
 ## Installation
 

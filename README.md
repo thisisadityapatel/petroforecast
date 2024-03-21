@@ -1,29 +1,27 @@
 <p align="center">
   <kbd>
-    <img src="./edverdo.gif" alt="Alt Text" width="300" style="border: 2px solid gray">
+    <img src="./petroforecast.png" alt="Alt Text" width="400" style="border: 2px solid gray">
   </kbd>
-</p>
-
-Eduardo Saverin (context: facebook co-founder) made 300k during his summer at harvard betting on heating oil futures, crazy! Built this full stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
-
-<p align="center">
   <kbd>
-    <img src="./petroforecast.png" alt="Alt Text" width="700" style="border: 2px solid gray">
+    <img src="./edverdo.gif" alt="Alt Text" width="250" style="border: 2px solid gray">
   </kbd>
 </p>
 
-## Technologies Used
-
-- Backend: Python FastAPI, NumPy, SQLite3 database for seamless data management.
-- Machine Learning: Scikit library for training accurate prediction models.
-- Time Series: Prophet Library by Facebook (Meta)
-- Frontend: React and Recharts for a captivating and intuitive user interface.
+Eduardo Saverin made $300k during his summer at Harvard betting on heating oil futures, crazy! Built this full-stack machine learning project to visualize and predict the data and to understand his bet from a prespect of smart analytics.
 
 ## Installation
 
-The applicstion uses Docker Compose to containerize everthing and make it easier for anyone to setup. One prerequisite includes having docker on the device. You can install docker and docker-compose from [here.](https://www.docker.com/products/docker-desktop/)
+The application uses Docker Compose to containerize everthing and make it easier for anyone to setup. One requirements is to have docker on the device. You can install docker from [here.](https://www.docker.com/products/docker-desktop/)
 
 ```shell
 docker-compose up
 ```
-Visit [http://localhost:3000](http://localhost:3000) to PetroForecast !!
+
+The application should be up and running on [http://localhost:3000](http://localhost:3000)
+
+## Tech Stack
+
+- Backend: Python FastAPI, NumPy, Pandas, SQLite3 database
+- Machine Learning: Scikit library MultiVariable Regression Model, Prophet by Meta
+- Frontend: React.js, Recharts.js
+- Other: Docker, Docker-Compose

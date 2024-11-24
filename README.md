@@ -1,4 +1,4 @@
-# PetroForecast
+# PetroForecast - US Heating Oil Options Prediction
 
 <p align="center">
   <kbd>
